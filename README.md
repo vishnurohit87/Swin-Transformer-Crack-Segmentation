@@ -45,6 +45,7 @@ Here are some comparisons between the original segmentation and model's output:
 ![](link_to_ground_truth)  |  ![](link_to_result)
 
 Below are some results on random road crack images from Google Images:  
+|              |   |
 :-------------------------:|:-------------------------:
 ![](link_to_result_1)  |  ![](link_to_result_2)
 ![](link_to_result_3)  |  ![](link_to_result_4)
