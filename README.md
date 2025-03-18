@@ -1,10 +1,10 @@
 # Road Cracks Segmentation using Swin Transformer
 The goal of this project is to perform semantic segmentation on images of roads to accurately detect and segment cracks. This is crucial for automating road inspection and maintenance workflows.
 
-This model utilizes a Swin Transformer (Tiny variant) as the backbone, integrated into a UPerNet (Unified Perceptual Parsing) architecture to leverage both global and local context for precise segmentation. The model weights were initialized from pre-trained Swin Transformer Tiny checkpoint provided by OpenMMLab that was trained on the ADE20K dataset.
-This model is trained using a combination of 2 losses: Cross-Entropy Loss was used in early stages of training, followed by the [Lovasz-Softmax Loss](https://arxiv.org/abs/1705.08790) which is better at directly optimizing the IoU on finer cracks.
+This model utilizes a Swin Transformer (Tiny variant) as the backbone, integrated into a UPerNet (Unified Perceptual Parsing) architecture to leverage both global and local context for precise segmentation. The model weights were initialized from a pre-trained Swin Transformer Tiny checkpoint provided by OpenMMLab that was trained on the ADE20K dataset.
+This model is trained using a combination of 2 losses: Cross-Entropy Loss was used in the early stages of training, followed by the [Lovasz-Softmax Loss](https://arxiv.org/abs/1705.08790) which is better at directly optimizing the IoU on finer cracks.
 
-While a standart [Vision Transformer (ViT)](https://arxiv.org/abs/2010.11929) can also be used for this task, [Swin Transformer](https://arxiv.org/pdf/2103.14030.pdf) was chosen due to its efficiency in dense prediction tasks.
+While a standard [Vision Transformer (ViT)](https://arxiv.org/abs/2010.11929) can also be used for this task, [Swin Transformer](https://arxiv.org/pdf/2103.14030.pdf) was chosen due to its efficiency in dense prediction tasks.
 
 
 ## Dataset
@@ -29,27 +29,23 @@ The file structure of the dataset is as follows:
 
 ```
 
-## Main results
-| Backbone | Method | Crop Size | Lr Schd | mIoU | config | model |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Swin-T | UPerNet | 384x384 | 15K | 51.55 | [config](configs/swin/config_upernet_swin_large_patch4_window12_384x384_15k_cracks.py) | model(to be uploaded soon) |
-| Swin-T | UPerNet | 384x384 | 40K | 54.89 | [config](configs/swin/config_upernet_swin_large_patch4_window12_384x384_40k_cracks_lovasz.py) | model (to be uploaded soon) |
-
+## Results
 Here are some comparisons between the original segmentation and model's output:  
 
 
-| Original segmentation             |  Segmentation after training |
-:-------------------------:|:-------------------------:
-![](link_to_ground_truth)  |  ![](link_to_result)
-![](link_to_ground_truth)  |  ![](link_to_result)
-![](link_to_ground_truth)  |  ![](link_to_result)
+| Image         | Original segmentation             |  Segmentation after training |
+:-------------------------:|:-------------------------:|:-------------------------:
+![](https://github.com/user-attachments/assets/8e9d2f9d-37b0-4827-9333-10ff001222c7) | ![](https://github.com/user-attachments/assets/3b4b525d-65cb-4cc5-a65f-3b4efeac231f) | ![](https://github.com/user-attachments/assets/3a324db5-9ae8-4a7a-a933-4d7fb5e8a0e6) |
+![](https://github.com/user-attachments/assets/22643d51-8440-461e-8bae-888955c9eaba) |![](https://github.com/user-attachments/assets/c9e0e735-32a2-4be7-aeb3-eb1e59126d3e) | ![](https://github.com/user-attachments/assets/7adb765c-ab1a-45d3-85dc-55dad7015c01) | 
+![](https://github.com/user-attachments/assets/5aa882b2-517a-433f-850a-14b5ee7b8b65) | ![](https://github.com/user-attachments/assets/9539edf1-d389-4186-b9ea-99221e2c591c) | ![](https://github.com/user-attachments/assets/4e790ba2-d351-4bfe-86f8-62dcec4b6363)
 
 Below are some results on random road crack images from Google Images:  
 | Image             |   Result |
 :-------------------------:|:-------------------------:
- ![](https://github.com/user-attachments/assets/c7199e55-0dd8-4e13-b73f-db29f76418fa) | ![](https://github.com/user-attachments/assets/24a582d1-b7d1-4a85-9bc6-7326b77a4c03)
-![](link_to_result_3)  |  ![](link_to_result_4)
+![](https://github.com/user-attachments/assets/7151f799-4e2d-44db-804f-1647c86c0ac3) | ![](https://github.com/user-attachments/assets/0a729a71-e76f-4722-8a9f-e7d3bc73f0bb)
+![](https://github.com/user-attachments/assets/3ddc3fce-790b-4570-b44a-0e6c37f16e9e) | ![](https://github.com/user-attachments/assets/0ec9327a-22f1-45cf-8d0a-81fdf52ed7ff)
 
+Models to be uploaded soon...
 
 # Swin Transformer for Semantic Segmentaion
 
