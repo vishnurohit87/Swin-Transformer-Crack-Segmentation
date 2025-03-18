@@ -7,7 +7,7 @@ This model is trained using a combination of 2 losses: Cross-Entropy Loss was us
 While a standart [Vision Transformer (ViT)](https://arxiv.org/abs/2010.11929) can also be used for this task, [Swin Transformer](https://arxiv.org/pdf/2103.14030.pdf) was chosen due to its efficiency in dense prediction tasks.
 
 
-### Dataset
+## Dataset
 The model was trained on [Crack Segmentation Dataset](https://www.kaggle.com/datasets/lakshaymiddha/crack-segmentation-dataset) with around 11.200 images which merges data from 12 available crack segmentation datasets.
 
 The file structure of the dataset is as follows:
@@ -29,11 +29,26 @@ The file structure of the dataset is as follows:
 
 ```
 
-### Main results
+## Main results
 | Backbone | Method | Crop Size | Lr Schd | mIoU | config | model |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Swin-T | UPerNet | 384x384 | 20K | 51.55 | [config](configs/swin/config_upernet_swin_large_patch4_window12_384x384_15k_cracks.py) | model(to be uploaded soon) |
-| Swin-T | UPerNet | 384x384 | 40K | 54.83 | [config](configs/swin/config_upernet_swin_large_patch4_window12_384x384_40k_cracks_lovasz.py) | model (to be uploaded soon) |
+| Swin-T | UPerNet | 384x384 | 15K | 51.55 | [config](configs/swin/config_upernet_swin_large_patch4_window12_384x384_15k_cracks.py) | model(to be uploaded soon) |
+| Swin-T | UPerNet | 384x384 | 40K | 54.89 | [config](configs/swin/config_upernet_swin_large_patch4_window12_384x384_40k_cracks_lovasz.py) | model (to be uploaded soon) |
+
+Here are some comparisons between the original segmentation and model's output:  
+
+
+| Original segmentation             |  Segmentation after training |
+:-------------------------:|:-------------------------:
+![](link_to_ground_truth)  |  ![](link_to_result)
+![](link_to_ground_truth)  |  ![](link_to_result)
+![](link_to_ground_truth)  |  ![](link_to_result)
+
+Below are some results on random road crack images from Google Images:  
+:-------------------------:|:-------------------------:
+![](link_to_result_1)  |  ![](link_to_result_2)
+![](link_to_result_3)  |  ![](link_to_result_4)
+
 
 # Swin Transformer for Semantic Segmentaion
 
