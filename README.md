@@ -1,3 +1,40 @@
+# Road Cracks Segmentation using Swin Transformer
+The goal of this project is to perform semantic segmentation on images of roads to accurately detect and segment cracks. This is crucial for automating road inspection and maintenance workflows.
+
+This model utilizes a Swin Transformer (Tiny variant) as the backbone, integrated into a UPerNet (Unified Perceptual Parsing) architecture to leverage both global and local context for precise segmentation. The model weights were initialized from pre-trained Swin Transformer Tiny checkpoint provided by OpenMMLab that was trained on the ADE20K dataset.
+This model is trained using a combination of 2 losses: Cross-Entropy Loss was used in early stages of training, followed by the [Lovasz-Softmax Loss](https://arxiv.org/abs/1705.08790) which is better at directly optimizing the IoU on finer cracks.
+
+While a standart [Vision Transformer (ViT)](https://arxiv.org/abs/2010.11929) can also be used for this task, [Swin Transformer](https://arxiv.org/pdf/2103.14030.pdf) was chosen due to its efficiency in dense prediction tasks.
+
+
+### Dataset
+The model was trained on [Crack Segmentation Dataset](https://www.kaggle.com/datasets/lakshaymiddha/crack-segmentation-dataset) with around 11.200 images which merges data from 12 available crack segmentation datasets.
+
+The file structure of the dataset is as follows:
+```none
+├── data
+│   ├── cracks
+│   │   ├── ann_dir
+│   │   │   ├── train
+│   │   │   │   ├── xxx.jpg
+│   │   │   │   ├── yyy.jpg
+│   │   │   │   ├── zzz.jpg
+│   │   │   ├── val
+│   │   ├── images
+│   │   │   ├── train
+│   │   │   │   ├── xxx.png
+│   │   │   │   ├── yyy.png
+│   │   │   │   ├── zzz.png
+│   │   │   ├── val
+
+```
+
+### Main results
+| Backbone | Method | Crop Size | Lr Schd | mIoU | config | model |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| Swin-T | UPerNet | 384x384 | 20K | 51.55 | [config](configs/swin/config_upernet_swin_large_patch4_window12_384x384_15k_cracks.py) | model(to be uploaded soon) |
+| Swin-T | UPerNet | 384x384 | 40K | 54.83 | [config](configs/swin/config_upernet_swin_large_patch4_window12_384x384_40k_cracks_lovasz.py) | model (to be uploaded soon) |
+
 # Swin Transformer for Semantic Segmentaion
 
 This repo contains the supported code and configuration files to reproduce semantic segmentaion results of [Swin Transformer](https://arxiv.org/pdf/2103.14030.pdf). It is based on [mmsegmentaion](https://github.com/open-mmlab/mmsegmentation/tree/v0.11.0).
