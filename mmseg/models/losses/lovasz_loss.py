@@ -251,8 +251,10 @@ class LovaszLoss(nn.Module):
                  per_image=False,
                  reduction='mean',
                  class_weight=None,
-                 loss_weight=1.0):
-        super(LovaszLoss, self).__init__()
+                 loss_weight=1.0
+                 **kwargs):
+        kwargs.pop('use_sigmoid', None)
+        super(LovaszLoss, self).__init__(**kwargs)
         assert loss_type in ('binary', 'multi_class'), "loss_type should be \
                                                     'binary' or 'multi_class'."
 
