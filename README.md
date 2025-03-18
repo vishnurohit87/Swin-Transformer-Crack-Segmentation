@@ -47,7 +47,7 @@ Here are some comparisons between the original segmentation and model's output:
 Below are some results on random road crack images from Google Images:  
 | Image             |   Result |
 :-------------------------:|:-------------------------:
-![](link_to_result_1)  |  ![](link_to_result_2)
+ ![](https://github.com/user-attachments/assets/c7199e55-0dd8-4e13-b73f-db29f76418fa) | ![](https://github.com/user-attachments/assets/24a582d1-b7d1-4a85-9bc6-7326b77a4c03)
 ![](link_to_result_3)  |  ![](link_to_result_4)
 
 
