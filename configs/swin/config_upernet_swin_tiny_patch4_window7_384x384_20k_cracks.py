@@ -1,6 +1,6 @@
 _base_ = [
     '../_base_/models/upernet_swin.py', '../_base_/datasets/cracks.py',
-    '../_base_/default_runtime.py', '../_base_/schedules/schedule_15k.py'
+    '../_base_/default_runtime.py', '../_base_/schedules/schedule_20k.py'
 ]
 model = dict(
     backbone=dict(
@@ -17,13 +17,15 @@ model = dict(
         in_channels=[96, 192, 384, 768],
         num_classes=2,
         loss_decode=dict(
-            type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0
+            type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0,
+            class_weight = [0.2, 0.8]
         )),
     auxiliary_head=dict(
         in_channels=384,
         num_classes=2,
         loss_decode=dict(
-            type='CrossEntropyLoss', use_sigmoid=False, loss_weight=0.4
+            type='CrossEntropyLoss', use_sigmoid=False, loss_weight=0.4,
+            class_weight = [0.2, 0.8]
         )
     ))
 
